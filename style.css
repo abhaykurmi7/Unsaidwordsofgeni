@@ -450,14 +450,53 @@ button {
   font-family: var(--serif);
   font-size: 42px;
 }
+.mobile-shop {
+    width: 100%;
+}
 
+.mobile-shop-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+.mobile-shop-trigger span {
+    font-size: 42px;
+}
+.mobile-shop-links {
+    display: none;
+    padding-left: 20px;
+}
+
+.mobile-shop.open .mobile-shop-links {
+    display: block;
+}
+
+.mobile-shop-links a {
+    display: grid;
+    padding: 5px 0;
+}
+
+.mobile-shop-links a span {
+    margin-right: 10px;
+    font-size: 9px;
+    color: var(--muted);
+}
 
 /* =========================
    COMMON
 ========================= */
 
 .section {
-  padding: 150px 5vw;
+  padding: 10px 5vw;
 }
 
 
@@ -499,15 +538,11 @@ em {
 ========================= */
 
 .hero {
-  min-height: 100vh;
-
+  min-height: auto;
   position: relative;
-
   display: flex;
   align-items: center;
-
-  padding: 100px 5vw 60px;
-
+  padding: 20px 5vw;
   overflow: hidden;
 }
 
@@ -696,13 +731,6 @@ em {
 /* =========================
    INTRO
 ========================= */
-
-.intro {
-  padding-top: 170px;
-  padding-bottom: 180px;
-}
-
-
 .two-column {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1436,14 +1464,10 @@ footer {
   .section {
     padding-left: 24px;
     padding-right: 24px;
-
-    padding-top: 100px;
-    padding-bottom: 110px;
   }
 
 
   .hero {
-    min-height: 95vh;
 
     padding-left: 24px;
     padding-right: 24px;
@@ -2450,7 +2474,7 @@ footer {
 }
 
 /* =========================
-   ARCHIVE OLD Post 
+   ARCHIVE OLD Post
 ========================= */
 
 .archive-section {

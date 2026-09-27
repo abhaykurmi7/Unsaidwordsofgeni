@@ -60,10 +60,10 @@ revealElements.forEach((element) => {
 ========================= */
 
 const menuButton = document.querySelector(".menu-btn");
-
 const mobileMenu = document.querySelector(".mobile-menu");
-
 const mobileLinks = document.querySelectorAll(".mobile-menu a");
+const mobileShop = document.querySelector(".mobile-shop");
+const mobileShopTrigger = document.querySelector(".mobile-shop-trigger");
 
 menuButton.addEventListener("click", () => {
   const isOpen = mobileMenu.classList.toggle("open");
@@ -87,6 +87,13 @@ mobileLinks.forEach((link) => {
   });
 });
 
+if (mobileShop && mobileShopTrigger) {
+
+    mobileShopTrigger.addEventListener("click", () => {
+        mobileShop.classList.toggle("open");
+    });
+
+}
 /* =========================
    SMOOTH INTERNAL LINKS
 ========================= */
