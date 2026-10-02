@@ -64,13 +64,10 @@ button {
   position: fixed;
   inset: 0;
   z-index: 9999;
-
   display: grid;
   place-items: center;
-
   background: var(--ink);
   color: var(--paper);
-
   transition:
     transform 1s var(--ease);
 }
@@ -2549,4 +2546,101 @@ footer {
     grid-template-columns: 1fr;
   }
 
+}
+.image-reveal {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    cursor: default;
+    margin: 0 auto;
+    background: transparent;
+}
+
+/* PRIMARY IMAGE */
+
+.reveal-primary {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+
+/* AFTER / BEFORE IMAGE */
+
+.reveal-after {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+
+    -webkit-mask-image: radial-gradient(
+        circle 200px at 50% 50%,
+        black 0%,
+        black 35%,
+        rgba(0, 0, 0, .8) 55%,
+        rgba(0, 0, 0, .4) 72%,
+        transparent 100%
+    );
+
+    mask-image: radial-gradient(
+        circle 200px at 50% 50%,
+        black 0%,
+        black 35%,
+        rgba(0, 0, 0, .8) 55%,
+        rgba(0, 0, 0, .4) 72%,
+        transparent 100%
+    );
+}
+
+.reveal-after img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* EDGE MELT */
+
+.image-reveal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+
+    background:
+
+        /* LEFT + RIGHT — subtle melt */
+
+        linear-gradient(
+            to right,
+            var(--paper) 0%,
+            rgba(246, 243, 237, .8) 4%,
+            transparent 10%,
+            transparent 90%,
+            rgba(246, 243, 237, .8) 96%,
+            var(--paper) 100%
+        ),
+
+        /* TOP + BOTTOM — stronger melt */
+
+        linear-gradient(
+            to bottom,
+            var(--paper) 0%,
+            rgba(246, 243, 237, .9) 8%,
+            rgba(246, 243, 237, .45) 16%,
+            transparent 24%,
+            transparent 76%,
+            rgba(246, 243, 237, .45) 84%,
+            rgba(246, 243, 237, .9) 92%,
+            var(--paper) 100%
+        );
 }

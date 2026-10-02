@@ -220,3 +220,73 @@ Thank you 🤍
   window.open("https://www.instagram.com/direct/new/", "_blank");
 });
 }
+
+const reveal = document.querySelector(".image-reveal");
+const after = document.querySelector(".reveal-after");
+
+if (reveal && after) {
+
+    function revealAt(x, y) {
+        after.style.webkitMaskImage = `
+            radial-gradient(
+                circle 200px at ${x}px ${y}px,
+                black 0%,
+                black 35%,
+                rgba(0,0,0,.8) 55%,
+                rgba(0,0,0,.4) 72%,
+                transparent 100%
+            )
+        `;
+
+        after.style.maskImage = `
+            radial-gradient(
+                circle 200px at ${x}px ${y}px,
+                black 0%,
+                black 35%,
+                rgba(0,0,0,.8) 55%,
+                rgba(0,0,0,.4) 72%,
+                transparent 100%
+            )
+        `;
+    }
+
+    // DESKTOP
+    reveal.addEventListener("mousemove", (e) => {
+        const rect = reveal.getBoundingClientRect();
+
+        revealAt(
+            e.clientX - rect.left,
+            e.clientY - rect.top
+        );
+    });
+
+    // MOBILE
+    reveal.addEventListener("touchstart", (e) => {
+        const rect = reveal.getBoundingClientRect();
+        const touch = e.touches[0];
+
+        revealAt(
+            touch.clientX - rect.left,
+            touch.clientY - rect.top
+        );
+    }, { passive: true });
+
+    reveal.addEventListener("touchmove", (e) => {
+        const rect = reveal.getBoundingClientRect();
+        const touch = e.touches[0];
+
+        revealAt(
+            touch.clientX - rect.left,
+            touch.clientY - rect.top
+        );
+    }, { passive: true });
+
+    // Reset when leaving desktop image
+    reveal.addEventListener("mouseleave", () => {
+        after.style.webkitMaskImage =
+            "radial-gradient(circle 0px at 50% 50%, black 0%, transparent 100%)";
+
+        after.style.maskImage =
+            "radial-gradient(circle 0px at 50% 50%, black 0%, transparent 100%)";
+    });
+}
